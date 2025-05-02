@@ -1,11 +1,11 @@
 import { NextRequest, NextResponse } from 'next/server';
 import * as cheerio from 'cheerio';
 
-export async function POST(req: NextRequest) {
-    try {
-        const formData = await req.formData();
-        const url = formData.get('url');
 
+export async function POST(req: NextRequest) {
+    const data = await req.json();
+    const url = data.url;
+    try {
         if (!url || typeof url !== 'string') {
             return NextResponse.json({ error: 'Missing or invalid URL' }, { status: 400 });
         }
@@ -27,14 +27,14 @@ export async function POST(req: NextRequest) {
             const href = $(el).attr('href');
 
             if (href) {
-                const blogUrl = `https://example.com${href}`; // Adjust as needed
+                const blogUrl = `https://quantoflow.com${href}`; // Adjust as needed
                 try {
                     const blogRes = await fetch(blogUrl);
                     const blogHtml = await blogRes.text();
                     const $$ = cheerio.load(blogHtml);
 
                     // Adjust selector to match your actual blog post container
-                    const text = $$('.prose').text().trim();
+                    const text = $$('article').text().trim();
 
                     blogContents.push({ link: blogUrl, text });
                 } catch (err) {
@@ -46,6 +46,7 @@ export async function POST(req: NextRequest) {
         return NextResponse.json({ blogContents });
 
     } catch (error) {
+        console.log(error)
         return NextResponse.json({ error: 'Unexpected error', detail: (error as Error).message }, { status: 500 });
     }
 }

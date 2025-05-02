@@ -1,10 +1,8 @@
-import Image from "next/image";
-import PdfUploadForm from "@/components/PdfUploadForm";
-
+import ScrapePage from "@/components/ScrapePage";
 export default function Home() {
   return (
     <div>
-      Input URL
+      <ScrapePage />
     </div>
   );
 }
