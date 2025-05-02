@@ -1,0 +1,16 @@
+[project]
+name = "temporal-worker"
+version = "0.1.0"
+description = "Basic Temporal worker using Python"
+requires-python = ">=3.8"
+dependencies = [
+    "temporalio>=1.4.0",
+    "python-dotenv>=1.0.0",
+]
+
+[project.optional-dependencies]
+dev = [
+    "black",
+    "isort",
+    "mypy",
+]

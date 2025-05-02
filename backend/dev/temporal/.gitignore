@@ -1,0 +1,9 @@
+# Local environment files
+.env
+
+# Python virtual environment
+.venv/
+__pycache__/
+
+# Dependency management
+uv.lock 
