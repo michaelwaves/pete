@@ -1,5 +1,6 @@
 import { NextRequest, NextResponse } from 'next/server';
 import { GoogleGenAI } from '@google/genai';
+import { config } from './config';
 
 const ai = new GoogleGenAI({ apiKey: process.env.GEMINI_API_KEY! });
 
@@ -24,6 +25,7 @@ export async function POST(request: NextRequest) {
     }
 
     console.log('Received file:', file.name, 'Size:', file.size);
+    console.log('Awaiting model response...')
 
     const arrayBuffer = await file.arrayBuffer();
     const b64Data = Buffer.from(arrayBuffer).toString('base64');
@@ -72,11 +74,14 @@ export async function POST(request: NextRequest) {
 
     const result = await ai.models.generateContent({
       model: 'gemini-2.0-flash',
-      contents
+      contents,
+      config: config
     })
 
+    console.log(result?.text)
     return NextResponse.json({
-      message: 'PDF uploaded successfully!',
+      message: 'PDF processed successfully!',
+      data: result?.text,
       filename: file.name,
       size: file.size
     });
