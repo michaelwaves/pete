@@ -47,7 +47,7 @@ const PdfUploadForm = () => {
       formData.append('pdf', file);
       
       // Replace with your actual API endpoint
-      const response = await fetch('/api/upload-pdf', {
+      const response = await fetch('/api/upload', {
         method: 'POST',
         body: formData,
       });
