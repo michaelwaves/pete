@@ -1,7 +1,7 @@
 import { NextResponse } from 'next/server';
 import * as deepl from 'deepl-node';
 
-const authKey = process.env.DEEPL_AUTH_KEY || ''; // Store your API key in an environment variable
+const authKey = process.env.DEEPL_API_KEY || ''; // Store your API key in an environment variable
 const translator = new deepl.Translator(authKey);
 
 export async function POST(req: Request) {

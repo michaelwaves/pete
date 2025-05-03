@@ -50,7 +50,21 @@ so. it’s kind of funny.	adding a period creates a longer pause
 format it in json as  
 
 {
-speaker : "orion" | "astra",
+speaker : one of "abbie",
+			"allison",
+			"ally",
+			"alona",
+			"amber",
+			"ana",
+			"antoine",
+			"armon",
+			"brenda",
+			"brittany",
+			"carol",
+			"colin",
+			"courtney",
+			"elena",
+			"elliot",
 text: "string"
 }
     `
