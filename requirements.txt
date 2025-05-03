@@ -1,0 +1,6 @@
+temporalio>=1.1.0
+requests>=2.28.1
+beautifulsoup4>=4.11.1
+python-dotenv>=0.20.0
+google-generativeai>=0.3.1
+rime>=2.2.1 
